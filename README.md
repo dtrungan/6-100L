@@ -16,6 +16,14 @@ Course page: [MIT OCW – 6.100L](https://ocw.mit.edu/courses/6-100l-introductio
 
 ## 📁 Repository Structure
 
+```
+.
+├── LICENSE
+├── ps0
+│   └── ps0.py
+└── README.md
+```
+
 Each folder contains my implementation of that week's problem set.
 
 ## ⚠️ Disclaimer

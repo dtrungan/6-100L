@@ -3,8 +3,8 @@
 # Written by: sylvant, muneezap, charz, anabell, nhung, wang19k, asinelni, shahul, jcsands
 
 # Problem Set 3
-# Name:
-# Collaborators:
+# Name: An Dang Trung
+# Collaborators: None
 
 # Purpose: Check for similarity between two texts by comparing different kinds of word statistics.
 
@@ -106,19 +106,19 @@ def calculate_similarity_score(freq_dict1, freq_dict2):
             word_list.append(word)
     
     diff = 0
-    all = 0
+    total = 0
     for word in word_list:
         if word in freq_dict1 and word in freq_dict2:
             diff += abs(freq_dict1[word] - freq_dict2[word])
-            all += freq_dict1[word] + freq_dict2[word]
+            total += freq_dict1[word] + freq_dict2[word]
         elif word in freq_dict1:
             diff += freq_dict1[word]
-            all += freq_dict1[word]
+            total += freq_dict1[word]
         else:
             diff += freq_dict2[word]
-            all += freq_dict2[word]
+            total += freq_dict2[word]
     
-    return round(1 - diff/all, 2)
+    return round(1 - diff/total, 2)
 
 
 ### Problem 4: Most Frequent Word(s) ###
@@ -142,7 +142,7 @@ def get_most_frequent_words(freq_dict1, freq_dict2):
     If multiple words are tied (i.e. share the same highest frequency),
     return an alphabetically ordered list of all these words.
     """
-    word_dict = freq_dict1
+    word_dict = freq_dict1.copy()
     for word in freq_dict2:
         word_dict[word] += freq_dict2[word]
 
@@ -219,7 +219,7 @@ def get_tfidf(tf_file_path, idf_file_paths):
     tf_idf = []
     for i in tf.keys():
         tf_idf.append((i, tf[i]*idf[i]))
-    return tf_idf
+    return sorted(tf_idf, key=lambda x: (x[1], x[0]))
 
 
 if __name__ == "__main__":
